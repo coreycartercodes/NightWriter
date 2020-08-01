@@ -2,7 +2,7 @@ class FileManager
   attr_reader :file_in
 
   def initialize (input, output)
-    @file_in = File.read("./lib/#{input}")
+    @file_in = File.read("./textfiles/#{input}")
     @output = output
   end
 
@@ -12,7 +12,7 @@ class FileManager
   end
 
   def output_file
-    File.write(@output, @file_in.upcase)
+    File.write("./textfiles/#{@output}", @file_in.upcase)
   end
 
 end
