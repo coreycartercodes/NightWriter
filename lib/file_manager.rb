@@ -11,6 +11,7 @@ class FileManager
     "Created '#{@output}' containing #{output_characers} characters"
   end
 
+### Change to output in braile
   def output_file
     File.write("./textfiles/#{@output}", @file_in.upcase)
   end
