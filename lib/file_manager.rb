@@ -11,8 +11,8 @@ class FileManager
     "Created '#{@output}' containing #{output_characers} characters"
   end
 
-  # def output_file
-  #   File.write(output, "w") { |file| file.write(@file_in.upcase)}
-  # end
+  def output_file
+    File.write(@output, @file_in.upcase)
+  end
 
 end
