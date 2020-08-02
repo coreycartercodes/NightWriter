@@ -38,4 +38,7 @@ class Writer
     braille_line = "#{top}\n#{middle}\n#{bottom}\n"
   end
 
+  def write_text_line
+  end
+
 end

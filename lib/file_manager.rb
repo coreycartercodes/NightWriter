@@ -15,7 +15,7 @@ class FileManager
   end
 
   def output_message_braille_in
-    output_characters = (@file_in.length / 6)
+    output_characters = ((@file_in.chars.length)/6)
     "Created '#{@output}' containing #{output_characters} characters"
   end
 
@@ -27,7 +27,7 @@ class FileManager
       text = new_line.pop
       lines << new_line
     end
-    lines << text.split("",41)
+    lines << text.split("")
     lines
   end
 
