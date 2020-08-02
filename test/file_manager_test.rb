@@ -4,8 +4,8 @@ require "./lib/file_manager"
 class FileManagerTest < Minitest::Test
 
   def setup
-    @input = ARGV[0].chomp
-    @output = ARGV[1].chomp
+    @input = "message.txt"
+    @output = "braille.txt"
     @message = FileManager.new(@input, @output)
   end
 
@@ -24,7 +24,7 @@ class FileManagerTest < Minitest::Test
 
   def test_output_file_exists
     @message.output_file
-    assert File.exists?('./textfiles/braille.txt')
+    assert File.exists?('./data/braille.txt')
   end
 
   def test_create_lines_of_40_chars
