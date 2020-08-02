@@ -4,8 +4,8 @@ require "./lib/file_manager"
 class FileManagerTest < Minitest::Test
 
   def setup
-    @input = ARGV[0].chomp
-    @output = ARGV[1].chomp
+    @input = "message.txt"
+    @output = "braille.txt"
     @message = FileManager.new(@input, @output)
   end
 
@@ -14,17 +14,24 @@ class FileManagerTest < Minitest::Test
   end
 
   def test_it_reads_file
-    first_text = 'Look again'
+    first_text = 'look again'
     assert_equal first_text, @message.file_in[0..9]
   end
 
   def test_output_message
-    assert_equal "Created 'braille.txt' containing 593 characters", @message.output_message
+    assert_equal "Created 'braille.txt' containing 590 characters", @message.output_message
   end
 
   def test_output_file_exists
     @message.output_file
-    assert File.exists?('./textfiles/braille.txt')
+    assert File.exists?('./data/braille.txt')
   end
+
+  def test_create_lines_of_40_chars
+   assert_equal 40, @message.create_lines[1].size
+  end
+
+
+  # p @message.limit_characters
 
 end

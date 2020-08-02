@@ -1,6 +1,7 @@
-require './lib/reader'
+require './lib/file_manager'
 
 input = ARGV[0].chomp
 output = ARGV[1].chomp
-read_file = Reader.new(input, output)
-p read_file.output_message
+message = FileManager.new(input, output)
+p message.output_message
+translator = TextToBraille.new

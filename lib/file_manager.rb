@@ -1,8 +1,10 @@
+require './lib/writer'
+
 class FileManager
   attr_reader :file_in
 
   def initialize (input, output)
-    @file_in = File.read("./textfiles/#{input}")
+    @file_in = File.read("./data/#{input}").downcase
     @output = output
   end
 
@@ -13,7 +15,19 @@ class FileManager
 
 ### Change to output in braile
   def output_file
-    File.write("./textfiles/#{@output}", @file_in.upcase)
+    File.write("./data/#{@output}", @file_in.upcase)
   end
+
+  def create_lines
+    text = @file_in
+    lines = []
+    while text.chars.length >= 40
+      new_line = text.split("",41)
+      text = new_line.pop
+      lines << new_line
+    end
+    lines
+  end
+
 
 end

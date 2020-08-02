@@ -5,39 +5,57 @@ class TextToBraille
 
   def initialize
     @text_to_braille = {
-                        "a" => ["0.","..",".."],
-                        "b" => ["0.","0.",".."],
-                        "c" => ["00","..",".."],
-                        "d" => ["00",".0",".."],
-                        "e" => ["0.",".0",".."],
-                        "f" => ["00","0.",".."],
-                        "g" => ["00","00",".."],
-                        "h" => ["0.","00",".."],
-                        "i" => [".0","0.",".."],
-                        "j" => [".0","00",".."],
-                        "k" => ["0.","..","0."],
-                        "l" => ["0.","0.","0."],
-                        "m" => ["00","..","0."],
-                        "n" => ["00",".0","0."],
-                        "o" => ["0.",".0","0."],
-                        "p" => ["00","0.","0."],
-                        "q" => ["00","00","0."],
-                        "r" => ["0.","00","0."],
-                        "s" => [".0","0.","0."],
-                        "t" => [".0","00","0."],
-                        "u" => ["0.","..","00"],
-                        "v" => ["0.","0.","00"],
-                        "w" => [".0","00",".0"],
-                        "x" => ["00","..","00"],
-                        "y" => ["00",".0","00"],
-                        "z" => ["0.",".0","00"],
-                        "!" => ["..","00","0."],
-                        "'" => ["..","..","0."],
-                        "-" => ["..","..","00"],
-                        "." => ["..","00",".0"],
-                        "?" => ["..","0.","00"],
-                        " " => ["..","..",".."]
+                        "a" => {top: "0.", middle: "..", bottom: ".."},
+                        "b" => {top: "0.", middle: "0.", bottom: ".."},
+                        "c" => {top: "00", middle: "..", bottom: ".."},
+                        "d" => {top: "00", middle: ".0", bottom: ".."},
+                        "e" => {top: "0.", middle: ".0", bottom: ".."},
+                        "f" => {top: "00", middle: "0.", bottom: ".."},
+                        "g" => {top: "00", middle: "00", bottom: ".."},
+                        "h" => {top: "0.", middle: "00", bottom: ".."},
+                        "i" => {top: ".0", middle: "0.", bottom: ".."},
+                        "j" => {top: ".0", middle: "00", bottom: ".."},
+                        "k" => {top: "0.", middle: "..", bottom: "0."},
+                        "l" => {top: "0.", middle: "0.", bottom: "0."},
+                        "m" => {top: "00", middle: "..", bottom: "0."},
+                        "n" => {top: "00", middle: ".0", bottom: "0."},
+                        "o" => {top: "0.", middle: ".0", bottom: "0."},
+                        "p" => {top: "00", middle: "0.", bottom: "0."},
+                        "q" => {top: "00", middle: "00", bottom: "0."},
+                        "r" => {top: "0.", middle: "00", bottom: "0."},
+                        "s" => {top: ".0", middle: "0.", bottom: "0."},
+                        "t" => {top: ".0", middle: "00", bottom: "0."},
+                        "u" => {top: "0.", middle: "..", bottom: "00"},
+                        "v" => {top: "0.", middle: "0.", bottom: "00"},
+                        "w" => {top: ".0", middle: "00", bottom: ".0"},
+                        "x" => {top: "00", middle: "..", bottom: "00"},
+                        "y" => {top: "00", middle: ".0", bottom: "00"},
+                        "z" => {top: "0.", middle: ".0", bottom: "00"},
+                        "!" => {top: "..", middle: "00", bottom: "0."},
+                        "'" => {top: "..", middle: "..", bottom: "0."},
+                        "-" => {top: "..", middle: "..", bottom: "00"},
+                        "." => {top: "..", middle: "00", bottom: ".0"},
+                        "?" => {top: "..", middle: "0.", bottom: "00"},
+                        " " => {top: "..", middle: "..", bottom: ".."},
+                        "\"" => {top: "..", middle: ".0", bottom: "00"},
+                        "\n" => "\n"
                         }
   end
+
+  def alpha_to_braille_top(character)
+    @text_to_braille[character][:top]
+  end
+
+  def alpha_to_braille_middle(character)
+    @text_to_braille[character][:middle]
+  end
+
+  def alpha_to_braille_bottom(character)
+    @text_to_braille[character][:bottom]
+  end
+
+
+
+
 
 end
