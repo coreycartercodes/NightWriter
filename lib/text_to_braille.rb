@@ -42,10 +42,16 @@ class TextToBraille
                         }
   end
 
-  def alpha_to_braille(character)
-   puts @text_to_braille[character][:top]
-   puts @text_to_braille[character][:middle]
-   puts @text_to_braille[character][:bottom]
+  def alpha_to_braille_top(character)
+    @text_to_braille[character][:top]
+  end
+
+  def alpha_to_braille_middle(character)
+    @text_to_braille[character][:middle]
+  end
+
+  def alpha_to_braille_bottom(character)
+    @text_to_braille[character][:bottom]
   end
 
 
