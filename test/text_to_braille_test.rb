@@ -1,5 +1,4 @@
-require "minitest/autorun"
-require "minitest/pride"
+require "./test/test_helper"
 require "mocha/minitest"
 require "./lib/text_to_braille"
 
@@ -18,10 +17,4 @@ class TextToBrailleTest < Minitest::Test
 
 end
 
-dictionary = TextToBraille.new
-
-puts "{#{dictionary.text_to_braille["c"]}#{dictionary.text_to_braille["o"]}"
-print dictionary.text_to_braille["r"]
-print dictionary.text_to_braille["e"]
-puts dictionary.text_to_braille["y"]
-p dictionary.text_to_braille["y"]
+# dictionary = TextToBraille.new
