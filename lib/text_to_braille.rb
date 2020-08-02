@@ -44,15 +44,27 @@ class TextToBraille
   end
 
   def alpha_to_braille_top(char)
-    @text_to_braille[char][:top]
+    if @text_to_braille[char] == nil
+      "X"
+    else
+      @text_to_braille[char][:top]
+    end
   end
 
   def alpha_to_braille_middle(char)
-    @text_to_braille[char][:middle]
+    if @text_to_braille[char] == nil
+      "X"
+    else
+      @text_to_braille[char][:middle]
+    end
   end
 
   def alpha_to_braille_bottom(char)
-    @text_to_braille[char][:bottom]
+    if @text_to_braille[char] == nil
+      "X"
+    else
+      @text_to_braille[char][:bottom]
+    end
   end
 
 
