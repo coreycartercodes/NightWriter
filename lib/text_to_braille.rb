@@ -32,12 +32,13 @@ class TextToBraille
                         "y" => {top: "00", middle: ".0", bottom: "00"},
                         "z" => {top: "0.", middle: ".0", bottom: "00"},
                         "!" => {top: "..", middle: "00", bottom: "0."},
-                        "'" => {top: "..", middle: "..", bottom: "0."},
+                        "\'" => {top: "..", middle: "..", bottom: "0."},
                         "-" => {top: "..", middle: "..", bottom: "00"},
                         "." => {top: "..", middle: "00", bottom: ".0"},
                         "?" => {top: "..", middle: "0.", bottom: "00"},
                         " " => {top: "..", middle: "..", bottom: ".."},
                         "\"" => {top: "..", middle: ".0", bottom: "00"},
+                        "," => {top: "..", middle: "0.", bottom: ".."},
                         "\n" => "\n"
                         }
   end
@@ -53,9 +54,6 @@ class TextToBraille
   def alpha_to_braille_bottom(char)
     @text_to_braille[char][:bottom]
   end
-
-
-
 
 
 end

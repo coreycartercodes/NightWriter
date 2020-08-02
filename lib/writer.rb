@@ -10,11 +10,7 @@ class Writer
   def braille_top_line(line)
     top_line = ""
     line.each do |character|
-      if character != nil
-        top_line << @alpha.alpha_to_braille_top(character)
-      else
-        top_line
-      end
+      top_line << @alpha.alpha_to_braille_top(character)
     end
     top_line
   end
@@ -41,12 +37,5 @@ class Writer
     bottom = braille_bottom_line(line)
     braille_line = "#{top}\n#{middle}\n#{bottom}\n"
   end
-
-
-
-
-
-
-
 
 end

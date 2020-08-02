@@ -23,7 +23,7 @@ class FileManagerTest < Minitest::Test
   end
 
   def test_output_file_exists
-    @message.output_file
+    @message.write_braille_to_file
     assert File.exists?('./data/braille.txt')
   end
 
