@@ -27,7 +27,7 @@ class FileManagerTest < Minitest::Test
     assert File.exists?('./textfiles/braille.txt')
   end
 
-  def test_create_lines
+  def test_create_lines_of_40_chars
    assert_equal 40, @message.create_lines(0).length
    assert_equal 40, @message.create_lines(2).length
   end

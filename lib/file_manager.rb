@@ -16,4 +16,17 @@ class FileManager
     File.write("./textfiles/#{@output}", @file_in.upcase)
   end
 
+  def create_lines
+    text = @file_in
+    lines = []
+    line_number = 1
+    while text.chars.length >= 40
+      new_line = text.split("",40)
+      text = new_line.pop
+      lines << new_line
+    end
+    lines
+  end
+
+
 end
