@@ -19,9 +19,9 @@ class TextToBrailleTest < Minitest::Test
   end
 
   def test_it_translates_letters
-    skip
-   @dictionary.alpha_to_braille("h")
-    assert_equal "0.", top
+    assert_equal "0.", @dictionary.alpha_to_braille_top("a")
+    assert_equal "..", @dictionary.alpha_to_braille_middle("a")
+    assert_equal "..", @dictionary.alpha_to_braille_bottom("a")
   end
 
 
