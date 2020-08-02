@@ -1,5 +1,4 @@
 require "./test/test_helper"
-require "mocha/minitest"
 require "./lib/file_manager"
 
 class FileManagerTest < Minitest::Test

@@ -1,5 +1,4 @@
 require "./test/test_helper"
-require "mocha/minitest"
 require "./lib/text_to_braille"
 
 class TextToBrailleTest < Minitest::Test
