@@ -31,6 +31,14 @@ class Writer
     bottom_line
   end
 
+  def write_braille_line(line)
+    braille_line = "#{alpha_to_braille_top(line)}\n#{alpha_to_braille_middle(line)}\n#{alpha_to_braille_bottom(line)}\n"
+  end
+
+
+
+
+
 
 
 
