@@ -4,7 +4,7 @@ class FileManager
   attr_reader :file_in
 
   def initialize (input, output)
-    @file_in = File.read("./textfiles/#{input}").downcase
+    @file_in = File.read("./data/#{input}").downcase
     @output = output
   end
 
@@ -15,7 +15,7 @@ class FileManager
 
 ### Change to output in braile
   def output_file
-    File.write("./textfiles/#{@output}", @file_in.upcase)
+    File.write("./data/#{@output}", @file_in.upcase)
   end
 
   def create_lines
