@@ -1,3 +1,5 @@
+require './lib/writer'
+
 class FileManager
   attr_reader :file_in
 
