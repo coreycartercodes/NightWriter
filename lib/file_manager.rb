@@ -2,7 +2,7 @@ class FileManager
   attr_reader :file_in
 
   def initialize (input, output)
-    @file_in = File.read("./textfiles/#{input}")
+    @file_in = File.read("./textfiles/#{input}").downcase
     @output = output
   end
 
@@ -19,9 +19,8 @@ class FileManager
   def create_lines
     text = @file_in
     lines = []
-    line_number = 1
     while text.chars.length >= 40
-      new_line = text.split("",40)
+      new_line = text.split("",41)
       text = new_line.pop
       lines << new_line
     end

@@ -14,7 +14,7 @@ class FileManagerTest < Minitest::Test
   end
 
   def test_it_reads_file
-    first_text = 'Look again'
+    first_text = 'look again'
     assert_equal first_text, @message.file_in[0..9]
   end
 
@@ -28,9 +28,9 @@ class FileManagerTest < Minitest::Test
   end
 
   def test_create_lines_of_40_chars
-   assert_equal 40, @message.create_lines(0).length
-   assert_equal 40, @message.create_lines(2).length
+   assert_equal 40, @message.create_lines[1].size
   end
+
 
   # p @message.limit_characters
 
