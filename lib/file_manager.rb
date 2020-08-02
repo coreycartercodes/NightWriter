@@ -6,16 +6,12 @@ class FileManager
   def initialize (input, output)
     @file_in = File.read("./data/#{input}").downcase
     @output = output
+    @writer = Writer.new
   end
 
   def output_message
     output_characers = @file_in.gsub(/\s+/, '').length
     "Created '#{@output}' containing #{output_characers} characters"
-  end
-
-### Change to output in braile
-  def output_file
-    File.write("./data/#{@output}", @file_in.upcase)
   end
 
   def create_lines
@@ -29,7 +25,17 @@ class FileManager
     lines
   end
 
-  
+  def write_braille_to_file
+    output_file_data = ""
+    create_lines.each do |line|
+      output_file_data << @writer.write_braille_line(line)
+    end
+    File.write("./data/#{@output}", output_file_data)
+  end
+
+
+
+
 
 
 end
