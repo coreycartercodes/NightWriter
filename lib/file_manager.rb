@@ -2,7 +2,7 @@ class FileManager
   attr_reader :file_in
 
   def initialize (input, output)
-    @file_in = File.read("./lib/#{input}")
+    @file_in = File.read("./textfiles/#{input}")
     @output = output
   end
 
@@ -11,8 +11,9 @@ class FileManager
     "Created '#{@output}' containing #{output_characers} characters"
   end
 
+### Change to output in braile
   def output_file
-    File.write(@output, @file_in.upcase)
+    File.write("./textfiles/#{@output}", @file_in.upcase)
   end
 
 end
