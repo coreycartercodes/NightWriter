@@ -43,6 +43,9 @@ class BrailleToText
                      }
   end
 
+  def translate_braille_character(character)
+    @braille_to_text[character]
+  end
 
 
 end
