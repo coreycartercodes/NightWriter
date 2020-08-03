@@ -1,12 +1,15 @@
 require './lib/text_to_braille'
+require './lib/braille_to_text'
 
 class Writer
   attr_reader :alpha
 
   def initialize
     @alpha = TextToBraille.new
+    @braille = BrailleToText.new
   end
 
+#### Text to Braille
   def braille_top_line(line)
     top_line = ""
     line.each do |character|
@@ -38,7 +41,10 @@ class Writer
     braille_line = "#{top}\n#{middle}\n#{bottom}\n"
   end
 
-  def write_text_line
+#### Braille to Text
+
+  def translate_braille(braille_string)
+    
   end
 
 end
