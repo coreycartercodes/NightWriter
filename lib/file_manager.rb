@@ -9,17 +9,13 @@ class FileManager
     @writer = Writer.new
   end
 
+  #### Text to Braille
   def output_message_text_in
-    output_characters = @file_in.gsub(/\s+/, '').length
-    "Created '#{@output}' containing #{output_characters} characters"
+    output_characters_braille = @file_in.chars.count
+    "Created '#{@output}' containing #{output_characters_braille} characters"
   end
 
-  def output_message_braille_in
-    output_characters = ((@file_in.chars.length)/6)
-    "Created '#{@output}' containing #{output_characters} characters"
-  end
-
-  def create_lines_of_text ###does this forget the end of the message?
+  def create_lines_of_text
     text = @file_in
     lines = []
     while text.chars.length >= 40
@@ -39,22 +35,31 @@ class FileManager
     File.write("./data/#{@output}", output_file_data)
   end
 
-  def create_lines_of_braille
-    text = @file_in
-    lines = []
-    while text.chars.length >= 80
-      new_line = text.split("\n", 2)
-      text = new_line.pop
-      lines << new_line
+  #### Braile to Text
+  def output_message_braille_in
+    file_length = @file_in.chars.count
+    output_numbers = file_length/6
+    "Created '#{@output}' containing #{output_numbers} characters"
+  end
+
+  def create_braille_lines
+    braille_lines = @file_in.split("\n")
+    grouped_lines = []
+    while braille_lines.size > 0
+      line = []
+      3.times do
+        new_line = braille_lines.shift
+        line << new_line
+      end
+      grouped_lines << line
     end
-    lines << text
-    lines
+    grouped_lines
   end
 
   def write_text_to_file
     output_file_data = ""
-    create_lines_of_braille.each do |line|
-      output_file_data << @writer.write_text_line(line)
+    create_braille_lines.each do |character|
+      output_file_data << @writer.write_text_line(character)
     end
     File.write("./data/#{@output}", output_file_data)
   end
