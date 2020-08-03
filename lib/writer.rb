@@ -44,7 +44,11 @@ class Writer
 #### Braille to Text
 
   def translate_braille(braille_string)
-    
+    braille_string.map do |line|
+      line.map do |character|
+      @braille.translate_braille_character(character)
+    end
+    end.join
   end
 
 end
