@@ -35,7 +35,7 @@ class FileManager
     File.write("./data/#{@output}", output_file_data)
   end
 
-  #### Braile to Text
+  #### Braille to Text
   def output_message_braille_in
     file_length = @file_in.chars.count
     output_numbers = file_length/6
@@ -60,7 +60,7 @@ class FileManager
     grouped_lines
   end
 
-  def group_braille_characters ### Better to show/tell or shorten?
+  def group_braille_characters
     top = []
     middle = []
     bottom = []
@@ -69,7 +69,12 @@ class FileManager
       middle << group[1].scan(/(..)/)
       bottom << group[2].scan(/(..)/)
     end
-    characters = top[0].zip(middle[0], bottom[0])
+
+    characters = []
+    top.each_with_index do |group, index|
+      characters << group.zip(middle[index], bottom[index])
+    end
+    characters
   end
 
   def write_text_to_file
