@@ -1,13 +1,16 @@
 require './lib/text_to_braille'
+require './lib/braille_to_text'
 
 class Writer
-  attr_reader
+  attr_reader :alpha
 
   def initialize
     @alpha = TextToBraille.new
+    @braille = BrailleToText.new
   end
 
-  def alpha_to_braille_top(line)
+#### Text to Braille
+  def braille_top_line(line)
     top_line = ""
     line.each do |character|
       top_line << @alpha.alpha_to_braille_top(character)
@@ -15,7 +18,7 @@ class Writer
     top_line
   end
 
-  def alpha_to_braille_middle(line)
+  def braille_middle_line(line)
     middle_line = ""
     line.each do |character|
       middle_line << @alpha.alpha_to_braille_middle(character)
@@ -23,7 +26,7 @@ class Writer
     middle_line
   end
 
-  def alpha_to_braille_bottom(line)
+  def braille_bottom_line(line)
     bottom_line = ""
     line.each do |character|
       bottom_line << @alpha.alpha_to_braille_bottom(character)
@@ -32,14 +35,20 @@ class Writer
   end
 
   def write_braille_line(line)
-    braille_line = "#{alpha_to_braille_top(line)}\n#{alpha_to_braille_middle(line)}\n#{alpha_to_braille_bottom(line)}\n"
+    top = braille_top_line(line)
+    middle = braille_middle_line(line)
+    bottom = braille_bottom_line(line)
+    braille_line = "#{top}\n#{middle}\n#{bottom}\n"
   end
 
+#### Braille to Text
 
-
-
-
-
-
+  def translate_braille(braille_string)
+    braille_string.map do |line|
+      line.map do |character|
+      @braille.translate_braille_character(character)
+    end
+    end.join
+  end
 
 end

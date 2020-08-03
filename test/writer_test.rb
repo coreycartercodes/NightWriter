@@ -14,13 +14,14 @@ class WriterTest < Minitest::Test
   def test_it_can_write_parts_of_lines
     line = ["m", "o", "m"]
 
-    assert_equal "000.00", @writer.alpha_to_braille_top(line)
-    assert_equal "...0..", @writer.alpha_to_braille_middle(line)
-    assert_equal "0.0.0.", @writer.alpha_to_braille_bottom(line)
+    assert_equal "000.00", @writer.braille_top_line(line)
+    assert_equal "...0..", @writer.braille_middle_line(line)
+    assert_equal "0.0.0.", @writer.braille_bottom_line(line)
   end
 
   def test_it_can_write_lines
     line = ["m", "o", "m"]
     assert_equal "000.00\n...0..\n0.0.0.\n", @writer.write_braille_line(line)
   end
+
 end
