@@ -44,6 +44,10 @@ class FileManager
 
   def create_braille_lines
     braille_lines = @file_in.split("\n")
+  end
+
+  def group_braille_lines
+    braille_lines = create_braille_lines
     grouped_lines = []
     while braille_lines.size > 0
       line = []
@@ -56,16 +60,24 @@ class FileManager
     grouped_lines
   end
 
-  def write_text_to_file
-    output_file_data = ""
-    create_braille_lines.each do |character|
-      output_file_data << @writer.write_text_line(character)
+  def group_braille_characters ### Better to show/tell or shorten?
+    characters = []
+    group_braille_lines.each do |group|
+      while group.count > 0
+        top = group[0].scan(/(..)/).shift
+        middle = group[1].scan(/(..)/).shift
+        bottom = group[2].scan(/(..)/).shift
+        new_char = [top, middle, bottom]
+        characters << new_char
+      end
     end
-    File.write("./data/#{@output}", output_file_data)
+    characters
   end
 
-
-
-
+  def write_text_to_file
+    braille_string = group_braille_characters
+    output_file_data = @writer.translate_braille(braille_string)
+    File.write("./data/#{@output}", output_file_data)
+  end
 
 end
