@@ -37,7 +37,7 @@ class FileManagerTest < Minitest::Test
     output2 = "message2.txt"
     message2 = FileManager.new(input2, output2)
     message2.write_text_to_file
-    assert File.exists?('./data/message2.txt')
+    assert File.exist?('./data/message2.txt')
   end
 
   def test_output_braille_message
@@ -51,8 +51,15 @@ class FileManagerTest < Minitest::Test
     input2 = "braille.txt"
     output2 = "message2.txt"
     message2 = FileManager.new(input2, output2)
-    assert_equal 3, message2.create_braille_lines[0].size
+    assert_equal 80, message2.create_braille_lines[0].size
   end
 
+  def test_it_groups_braille_characters
+    skip
+    input2 = "braille.txt"
+    output2 = "message2.txt"
+    message2 = FileManager.new(input2, output2)
+    assert_equal 2, message2.group_braille_characters[0].count
+  end
 
 end
