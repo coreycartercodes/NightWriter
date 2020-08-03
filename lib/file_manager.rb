@@ -62,16 +62,15 @@ class FileManager
 
   def group_braille_characters ### Better to show/tell or shorten?
     characters = []
-    group_braille_lines.each do |group|
-      while group.count > 0
-        top = group[0].scan(/(..)/).shift
-        middle = group[1].scan(/(..)/).shift
-        bottom = group[2].scan(/(..)/).shift
-        new_char = [top, middle, bottom]
-        characters << new_char
-      end
+    group_by_char = group_braille_lines.map do |group|
+      top = group[0].scan(/(..)/).transpose
+      middle = group[1].scan(/(..)/).transpose
+      bottom = group[2].scan(/(..)/).transpose
+      zipper = top.zip(middle)
+      zipper.zip(bottom)
     end
-    characters
+    require "pry"; binding.pry
+    p "hey"
   end
 
   def write_text_to_file
