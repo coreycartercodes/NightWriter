@@ -17,9 +17,9 @@ class FileManagerTest < Minitest::Test
     first_text = 'look again'
     assert_equal first_text, @message.file_in[0..9]
   end
-
+#### Text to Braille
   def test_output_braille_message
-    assert_equal "Created 'braille.txt' containing 590 characters", @message.output_message_text_in
+    assert_equal "Created 'braille.txt' containing 713 characters", @message.output_message_text_in
   end
 
   def test_output_braille_file_exists
@@ -30,15 +30,9 @@ class FileManagerTest < Minitest::Test
   def test_create_text_lines_of_40_chars
    assert_equal 40, @message.create_lines_of_text[1].size
   end
-
-  def test_create_braille_lines_of_80_chars
-    input2 = "braille.txt"
-    output2 = "message2.txt"
-    message2 = FileManager.new(input2, output2)
-   assert_equal 80, message2.create_lines_of_braille[1].size
-  end
-
+#### Braille to Text
   def test_output_text_file_exists
+    skip
     input2 = "braille.txt"
     output2 = "message2.txt"
     message2 = FileManager.new(input2, output2)
@@ -49,8 +43,16 @@ class FileManagerTest < Minitest::Test
   def test_output_braille_message
     input2 = "braille.txt"
     output2 = "message2.txt"
-    message2 = FileManager.new(input2, output2)
-    assert_equal "Created 'message2.txt' containing 590 characters", message2.output_message_text_in
+    braile_message = FileManager.new(input2, output2)
+    assert_equal "Created 'message2.txt' containing 713 characters", braile_message.output_message_braille_in
   end
+
+  def test_it_groups_braille_lines
+    input2 = "braille.txt"
+    output2 = "message2.txt"
+    message2 = FileManager.new(input2, output2)
+    assert_equal 3, message2.create_braille_lines[0].size
+  end
+
 
 end
