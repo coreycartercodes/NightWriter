@@ -9,7 +9,7 @@ class Writer
     @braille = BrailleToText.new
   end
 
-#### Text to Braille
+  #### Text to Braille
   def braille_top_line(line)
     top_line = ""
     line.each do |character|
@@ -35,19 +35,14 @@ class Writer
   end
 
   def write_braille_line(line)
-    top = braille_top_line(line)
-    middle = braille_middle_line(line)
-    bottom = braille_bottom_line(line)
-    braille_line = "#{top}\n#{middle}\n#{bottom}\n"
+    braille_line = "#{braille_top_line(line)}\n#{braille_middle_line(line)}\n#{braille_bottom_line(line)}\n"
   end
-
-#### Braille to Text
-
-  def translate_braille(braille_string)
+  #### Braille to Text
+  def write_braille_string(braille_string)
     braille_string.map do |line|
       line.map do |character|
-      @braille.translate_braille_character(character)
-    end
+        @braille.translate_braille_character(character)
+      end
     end.join
   end
 
