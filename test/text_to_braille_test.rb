@@ -24,5 +24,9 @@ class TextToBrailleTest < Minitest::Test
     assert_equal "..", @dictionary.alpha_to_braille_bottom("a")
   end
 
-
+  def test_it_handles_unknowns
+    assert_equal "X", @dictionary.alpha_to_braille_top("~")
+    assert_equal "X", @dictionary.alpha_to_braille_middle("~")
+    assert_equal "X", @dictionary.alpha_to_braille_bottom("~")
+  end
 end
