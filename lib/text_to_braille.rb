@@ -1,8 +1,9 @@
 class TextToBraille
-  attr_reader :text_to_braille
 
   def initialize
-    @text_to_braille = {
+  end
+
+  Text_to_braille = {
       "a" => {top: "0.", middle: "..", bottom: ".."},
       "b" => {top: "0.", middle: "0.", bottom: ".."},
       "c" => {top: "00", middle: "..", bottom: ".."},
@@ -39,17 +40,17 @@ class TextToBraille
       "," => {top: "..", middle: "0.", bottom: ".."},
       ";" => {top: "..", middle: "0.", bottom: "0."},
       "\n" => "\n"
-    }
-  end
+                    }
+
 
   def alpha_to_braille_top(char)
     if char == "\n"
       ".."
     else
-      if @text_to_braille[char] == nil
+      if Text_to_braille[char] == nil
         "X"
       else
-        @text_to_braille[char][:top]
+        Text_to_braille[char][:top]
       end
     end
   end
@@ -58,10 +59,10 @@ class TextToBraille
     if char == "\n"
       ".."
     else
-      if @text_to_braille[char] == nil
+      if Text_to_braille[char] == nil
         "X"
       else
-        @text_to_braille[char][:middle]
+        Text_to_braille[char][:middle]
       end
     end
   end
@@ -70,10 +71,10 @@ class TextToBraille
     if char == "\n"
       ".."
     else
-      if @text_to_braille[char] == nil
+      if Text_to_braille[char] == nil
         "X"
       else
-        @text_to_braille[char][:bottom]
+        Text_to_braille[char][:bottom]
       end
     end
   end
