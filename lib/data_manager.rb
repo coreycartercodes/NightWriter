@@ -60,19 +60,15 @@ class DataManager
     grouped_lines
   end
 
-  def collect_braille_chars_by_position
+  def group_braille_characters
+    top = []
+    middle = []
+    bottom = []
     group_by_char = group_braille_lines.each do |group|
       top << group[0].scan(/(..)/)
       middle << group[1].scan(/(..)/)
       bottom << group[2].scan(/(..)/)
     end
-  end
-
-  def group_braille_characters
-    top = []
-    middle = []
-    bottom = []
-    collect_braille_chars_by_position
     characters = []
     top.each_with_index do |group, index|
       characters << group.zip(middle[index], bottom[index])

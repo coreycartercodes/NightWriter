@@ -1,7 +1,7 @@
-require './lib/file_manager'
+require './lib/data_manager'
 
 input = ARGV[0].chomp
 output = ARGV[1].chomp
-message = FileManager.new(input, output)
-p message.output_message_text_in
+message = DataManager.new(input, output)
+p message.output_message_writer
 message.write_braille_to_file
