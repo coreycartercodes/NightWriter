@@ -1,5 +1,3 @@
-require './lib/file_manager'
-
 class TextToBraille
   attr_reader :text_to_braille
 
@@ -39,6 +37,7 @@ class TextToBraille
       " " => {top: "..", middle: "..", bottom: ".."},
       "\"" => {top: "..", middle: ".0", bottom: "00"},
       "," => {top: "..", middle: "0.", bottom: ".."},
+      ";" => {top: "..", middle: "0.", bottom: "0."},
       "\n" => "\n"
     }
   end
@@ -78,6 +77,5 @@ class TextToBraille
       end
     end
   end
-
 
 end

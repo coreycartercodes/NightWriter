@@ -1,5 +1,3 @@
-require './lib/file_manager'
-
 class BrailleToText
   attr_reader :braille_to_text
 
@@ -46,6 +44,5 @@ class BrailleToText
   def translate_braille_character(character)
     @braille_to_text[character]
   end
-
 
 end

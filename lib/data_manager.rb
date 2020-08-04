@@ -1,18 +1,17 @@
 require './lib/writer'
 
-class FileManager
+class DataManager
   attr_reader :file_in
 
   def initialize (input, output)
     @file_in = File.read("./data/#{input}").downcase
-    @output = output
+    @output_file = output
     @writer = Writer.new
   end
 
   #### Text to Braille
-  def output_message_text_in
-    output_characters_braille = @file_in.chars.count
-    "Created '#{@output}' containing #{output_characters_braille} characters"
+  def output_message_writer
+    "Created '#{@output_file}' containing #{@file_in.chars.count} characters"
   end
 
   def create_lines_of_text
@@ -24,22 +23,23 @@ class FileManager
       lines << new_line
     end
     lines << text.split("")
-    lines
   end
 
-  def write_braille_to_file
+  def create_braille_output_file_data
     output_file_data = ""
     create_lines_of_text.each do |line|
       output_file_data << @writer.write_braille_line(line)
     end
-    File.write("./data/#{@output}", output_file_data)
+    output_file_data
+  end
+
+  def write_braille_to_file
+    File.write("./data/#{@output_file}", create_braille_output_file_data)
   end
 
   #### Braille to Text
-  def output_message_braille_in
-    file_length = @file_in.chars.count
-    output_numbers = file_length/6
-    "Created '#{@output}' containing #{output_numbers} characters"
+  def output_message_reader
+    "Created '#{@output_file}' containing #{(@file_in.chars.count)/6} characters"
   end
 
   def create_braille_lines
@@ -69,7 +69,6 @@ class FileManager
       middle << group[1].scan(/(..)/)
       bottom << group[2].scan(/(..)/)
     end
-
     characters = []
     top.each_with_index do |group, index|
       characters << group.zip(middle[index], bottom[index])
@@ -77,10 +76,12 @@ class FileManager
     characters
   end
 
+  def create_output_file_data
+    output_file_data = @writer.write_braille_string(group_braille_characters)
+  end
+
   def write_text_to_file
-    braille_string = group_braille_characters
-    output_file_data = @writer.translate_braille(braille_string)
-    File.write("./data/#{@output}", output_file_data)
+    File.write("./data/#{@output_file}", create_output_file_data)
   end
 
 end

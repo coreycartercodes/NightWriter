@@ -19,9 +19,11 @@ class WriterTest < Minitest::Test
     assert_equal "0.0.0.", @writer.braille_bottom_line(line)
   end
 
-  def test_it_can_write_lines
+  def test_it_can_write_braille_lines
     line = ["m", "o", "m"]
     assert_equal "000.00\n...0..\n0.0.0.\n", @writer.write_braille_line(line)
   end
+
+  ### Encoding issue with write_braille_string
 
 end
